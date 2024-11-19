@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservices.orderservice.model.Order;
 import com.microservices.orderservice.request.OrderRequest;
 import com.microservices.orderservice.service.OrderService;
 
@@ -20,9 +21,8 @@ public class OrderController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public String saveOrder(@RequestBody OrderRequest orderRequest) {
-		orderService.placeOrder(orderRequest);
-		return "order placed Successfully";
+	public Order saveOrder(@RequestBody OrderRequest orderRequest) {
+		return orderService.placeOrder(orderRequest);
 	}
 
 }
